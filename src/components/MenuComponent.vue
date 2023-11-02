@@ -7,7 +7,10 @@
             <router-link to="/deportes">Padre Deportes | </router-link>
         </li>
         <li>
-            <router-link to="/numeros">Sumar números</router-link>
+            <router-link to="/numeros">Sumar números | </router-link>
+        </li>
+        <li>
+            <router-link to="/comics">Comics</router-link>
         </li>
     </ul>
 </template>
