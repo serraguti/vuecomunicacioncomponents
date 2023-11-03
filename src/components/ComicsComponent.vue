@@ -1,8 +1,27 @@
 <template>
     <div>
         <h1 style="color:blue">Comics Parent</h1>
-        <div v-for="comic in comics" :key="comic">
-            <ComicComponent/>
+        <form v-on:submit.prevent="crearComic()">
+            <label>Título</label>
+            <input type="text" v-model="comicForm.titulo"/><br/>
+            <label>Descripción</label>
+            <input type="text" v-model="comicForm.descripcion"/><br/>
+            <label>Imagen</label>
+            <input type="text" v-model="comicForm.imagen"/><br/>
+            <label>Año</label>
+            <input type="number" v-model="comicForm.year"/><br/>
+            <button>
+                Nuevo Comic
+            </button>
+        </form>
+        <div v-if="comicFavorito" style="background-color:lightgreen">
+            <p>{{comicFavorito.titulo}}</p>
+            <img :src="comicFavorito.imagen"/>
+        </div>
+        <div id="comics" v-for="(comic, index) in comics" :key="comic">
+            <ComicComponent :comic="comic" :index="index"
+            v-on:seleccionarFavorito="seleccionarFavorito"
+            v-on:eliminarComic="eliminarComic"/>
         </div>
     </div>
 </template>
@@ -14,8 +33,26 @@ import ComicComponent from './ComicComponent.vue';
         components: {
             ComicComponent
         }, 
+        methods: {
+            crearComic() {
+                this.comics.push(this.comicForm);
+            },
+            seleccionarFavorito(comic) {
+                this.comicFavorito = comic;
+            }, 
+            eliminarComic(index) {
+                this.comics.splice(index, 1);
+            }
+        },
         data() {
             return {
+                comicForm: {
+                    titulo: "",
+                    imagen: "",
+                    descripcion: "", 
+                    year: 0
+                },
+                comicFavorito: null,
                 comics: [
                     {
                     titulo: "Spiderman",
