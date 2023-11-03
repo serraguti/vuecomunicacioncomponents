@@ -14,7 +14,7 @@
         </li>
         <li>
             <router-link to="/seleccionmultiple">Selección múltiple</router-link>
-        </li>        
+        </li>
     </ul>
 </template>
 

@@ -1,20 +1,19 @@
 <template>
     <div>
-        <h1>Selección múltiple Forms</h1>
+        <h1>Selección múltiple Select</h1>
         <form v-on:submit.prevent="mostrarSeleccionados()">
-            <select multiple="true" size="7"
-            v-model="seleccionados">
-                <option v-for="option in opciones" :key="option">
-                    {{option}}
+            <select size="8" multiple v-model="opcionesSeleccionadas">
+                <option v-for="opt in opciones" :key="opt">
+                    {{opt}}
                 </option>
             </select>
             <button>
                 Mostrar seleccionados
             </button>
-         </form>
-         <h2 style="color:blue">
-            {{datos}}
-         </h2>
+        </form>
+        <h2 style="color:blue">
+            {{seleccionados}}
+        </h2>
     </div>
 </template>
 
@@ -23,19 +22,17 @@
         name: "SeleccionMultiple", 
         methods: {
             mostrarSeleccionados() {
-                this.datos = "";
-                for (var option of this.seleccionados){
-                    this.datos += option + ",";
+                this.seleccionados = "";
+                for (var opt of this.opcionesSeleccionadas){
+                    this.seleccionados += opt + ",";
                 }
-                console.log("Seleccionados");
             }
         },
         data() {
             return {
-                opciones: ["Opción A", "Opción B", "Opción C"
-                , "Opción D", "Opción E"], 
-                seleccionados: [], 
-                datos: ""
+                opciones: ["A", "B", "C", "D", "E", "F", "Opción T"], 
+                opcionesSeleccionadas: [], 
+                seleccionados: ""
             }
         }
     }
