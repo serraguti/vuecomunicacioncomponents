@@ -10,8 +10,11 @@
             <router-link to="/numeros">Sumar números | </router-link>
         </li>
         <li>
-            <router-link to="/comics">Comics</router-link>
+            <router-link to="/comics">Comics | </router-link>
         </li>
+        <li>
+            <router-link to="/seleccionmultiple">Selección múltiple</router-link>
+        </li>        
     </ul>
 </template>
 
